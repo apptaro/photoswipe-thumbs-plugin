@@ -1,0 +1,37 @@
+{
+  "name": "photoswipe-thumbs-plugin",
+  "version": "0.1.0",
+  "description": "PhotoSwipe v5 plugin that adds a horizontally scrollable thumbnail strip under the viewer.",
+  "type": "module",
+  "main": "photoswipe-thumbs-plugin.esm.js",
+  "module": "photoswipe-thumbs-plugin.esm.js",
+  "exports": {
+    ".": "./photoswipe-thumbs-plugin.esm.js"
+  },
+  "files": [
+    "photoswipe-thumbs-plugin.esm.js",
+    "README.md",
+    "sample.html"
+  ],
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "photoswipe",
+    "gallery",
+    "lightbox",
+    "plugin",
+    "thumbnails"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apptaro/photoswipe-thumbs-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apptaro/photoswipe-thumbs-plugin/issues"
+  },
+  "homepage": "https://github.com/apptaro/photoswipe-thumbs-plugin#readme"
+}
