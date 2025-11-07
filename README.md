@@ -30,12 +30,12 @@ A lightweight **PhotoSwipe v5** plugin that adds
 
 ---
 
-## 🚀 Quick Start (no build)
+## 🚀 Sample Demo
 
-1. Open `index.html` using any static server  
+1. Open `sample.html` using any static server  
    (e.g. `python3 -m http.server`)
 2. Ensure internet access to load PhotoSwipe from UNPKG CDN.
-3. Click the arrows to see the animated looping transition.
+3. Click thumbnails to switch slides.
 
 ---
 
@@ -52,7 +52,7 @@ A lightweight **PhotoSwipe v5** plugin that adds
 
 <script type="module">
   import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.js';
-  import { PhotoSwipeThumbsPlugin } from './photoswipe-thumbs-plugin.esm.js';
+  import PhotoSwipeThumbsPlugin from './photoswipe-thumbs-plugin.esm.js';
 
   const lightbox = new PhotoSwipeLightbox({
     gallery: '#gallery',
@@ -82,7 +82,7 @@ A lightweight **PhotoSwipe v5** plugin that adds
 | `autoHideOnSingle` | boolean | `true` | Do not show the thumbs UI when only one slide exists. |
 | `showHideAnimationDuration` | number | `160` | Show/hide animation duration in milliseconds for the thumbs UI. |
 | `scrollAnimationDuration` | number | `240` | Scroll animation duration in milliseconds for the "center active thumb" animation. |
-| `classPrefix` | string | `'pswp-animated'` | CSS class prefix for injected DOM elements. |
+| `classPrefix` | string | `'pswp-thumbs'` | CSS class prefix for injected DOM elements. |
 
 ---
 

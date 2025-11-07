@@ -12,7 +12,7 @@
  * Repository: https://github.com/apptaro/photoswipe-thumbs-plugin
  */
 
-export class PhotoSwipeThumbsPlugin {
+export default class PhotoSwipeThumbsPlugin {
   /**
    * @param {PhotoSwipeLightbox} lightbox - PhotoSwipe lightbox instance
    * @param {Object} [options={}] - configuration options
@@ -20,15 +20,15 @@ export class PhotoSwipeThumbsPlugin {
   constructor(lightbox, options = {}) {
     this.lightbox = lightbox;
     this.options = {
-      thumbHeight: options.thumbHeight ?? 64,
-      thumbAspectRatio: options.thumbAspectRatio ?? 1,
-      gap: options.gap ?? 6,
-      paddingX: options.paddingX ?? 0,
-      dragClickThreshold: options.dragClickThreshold ?? 6,
-      autoHideOnSingle: options.autoHideOnSingle ?? true,
-      showHideAnimationDuration: options.showHideAnimationDuration ?? 160,
-      scrollAnimationDuration: options.scrollAnimationDuration ?? 240,
-      classPrefix: options.classPrefix ?? 'pswp-thumbs',
+      thumbHeight: options?.thumbHeight ?? 64,
+      thumbAspectRatio: options?.thumbAspectRatio ?? 1,
+      gap: options?.gap ?? 6,
+      paddingX: options?.paddingX ?? 0,
+      dragClickThreshold: options?.dragClickThreshold ?? 6,
+      autoHideOnSingle: options?.autoHideOnSingle ?? true,
+      showHideAnimationDuration: options?.showHideAnimationDuration ?? 160,
+      scrollAnimationDuration: options?.scrollAnimationDuration ?? 240,
+      classPrefix: options?.classPrefix ?? 'pswp-thumbs',
     };
 
     this._thumbHeight = this.options.thumbHeight;
