@@ -121,7 +121,7 @@ export default class PhotoSwipeThumbsPlugin {
           box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.75) inset; transform: translateY(-1px);
         }
         ${scope} .${cfg.classPrefix}-thumb.is-active .${cfg.classPrefix}-img {
-          box-shadow: 0px 0px 0px 2px #fff inset, 0 0 0 2px rgba(0,0,0,0.25);
+          box-shadow: 0px 0px 0px 2px #fff;
         }
       `;
       this._styleEl = document.createElement('style');
