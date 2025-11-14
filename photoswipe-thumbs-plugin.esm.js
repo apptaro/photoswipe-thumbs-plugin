@@ -361,7 +361,6 @@ export default class PhotoSwipeThumbsPlugin {
       const numItems = pswp.getNumItems();
       if (cfg.autoHideOnSingle && (numItems <= 1)) return;
 
-      console.log('build');
       applyPaddingHook();
       applyCSS();
       buildUI();
@@ -375,7 +374,6 @@ export default class PhotoSwipeThumbsPlugin {
       });
 
       pswp.on('destroy', () => {
-        console.log('unbuild');
         unbuildUI(pswp);
         unapplyCSS(pswp);
         unapplyPaddingHook(pswp);
