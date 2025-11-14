@@ -80,8 +80,8 @@ A lightweight **PhotoSwipe v5** plugin that adds
 | `paddingX` | number | `0` | Horizontal padding (left/right) inside the thumbs container (px). |
 | `dragClickThreshold` | number | `6` | Pixel distance after which a drag cancels a click. |
 | `autoHideOnSingle` | boolean | `true` | Do not show the thumbs UI when only one slide exists. |
-| `showHideAnimationDuration` | number | `160` | Show/hide animation duration in milliseconds for the thumbs UI. |
-| `scrollAnimationDuration` | number | `240` | Scroll animation duration in milliseconds for the "center active thumb" animation. |
+| `showHideAnimationDuration` | number | `333` | Show/hide animation duration in milliseconds for the thumbs UI. |
+| `scrollAnimationDuration` | number | `300` | Scroll animation duration in milliseconds for the "center active thumb" animation. |
 | `classPrefix` | string | `'pswp-thumbs'` | CSS class prefix for injected DOM elements. |
 
 ---

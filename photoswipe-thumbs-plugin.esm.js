@@ -26,8 +26,8 @@ export default class PhotoSwipeThumbsPlugin {
       paddingX: options?.paddingX ?? 0,
       dragClickThreshold: options?.dragClickThreshold ?? 6,
       autoHideOnSingle: options?.autoHideOnSingle ?? true,
-      showHideAnimationDuration: options?.showHideAnimationDuration ?? 160,
-      scrollAnimationDuration: options?.scrollAnimationDuration ?? 240,
+      showHideAnimationDuration: options?.showHideAnimationDuration ?? 333,
+      scrollAnimationDuration: options?.scrollAnimationDuration ?? 300,
       classPrefix: options?.classPrefix ?? 'pswp-thumbs',
     };
 
@@ -64,7 +64,7 @@ export default class PhotoSwipeThumbsPlugin {
         return {
           top:    (base.top    || 0) + this._measureTopUIHeight(),
           right:  (base.right  || 0),
-          bottom: (base.bottom || 0) + this._measureThumbsUIHeight(),
+          bottom: (base.bottom || 0) + this._measureThumbsUIHeight() + (window.innerHeight - document.documentElement.clientHeight),
           left:   (base.left   || 0),
         };
       };
@@ -187,26 +187,20 @@ export default class PhotoSwipeThumbsPlugin {
       onChangeSlide();
 
       bindDrag();
-
-      requestAnimationFrame(() => {
-        this._ui.classList.add('is-visible');
-        pswp.updateSize(true);
-      });
     };
 
     const unbuildUI = (pswp) => {
       if (this._smoothScrollAnimation?.stop) this._smoothScrollAnimation.stop();
       if (this._inertiaScrollAnimation?.stop) this._inertiaScrollAnimation.stop();
 
-      this._ui.classList.remove('is-visible');
-
       unbindDrag();
 
       lightbox.off('change', onChangeSlide);
 
-      const removeUI = () => { this._ui.remove(); this._ui = null; this._track = null; this._thumbs = []; };
-      this._ui.addEventListener('transitionend', removeUI, { once: true });
-      setTimeout(removeUI, cfg.showHideAnimationDuration + 50);
+      this._ui.remove();
+      this._ui = null;
+      this._track = null;
+      this._thumbs = [];
     };
 
     const onChangeSlide = () => {
@@ -221,6 +215,17 @@ export default class PhotoSwipeThumbsPlugin {
       btn.classList.add('is-active');
       this._activeThumbIdx = idx;
       scrollThumbIntoView(btn, !initial);
+    };
+
+    const showUI = () => {
+      requestAnimationFrame(() => {
+        this._ui.classList.add('is-visible');
+        pswp.updateSize(true);
+      });
+    };
+
+    const hideUI = (pswp) => {
+      this._ui.classList.remove('is-visible');
     };
 
     const scrollThumbIntoView = (btn, animate) => {
@@ -356,11 +361,21 @@ export default class PhotoSwipeThumbsPlugin {
       const numItems = pswp.getNumItems();
       if (cfg.autoHideOnSingle && (numItems <= 1)) return;
 
+      console.log('build');
       applyPaddingHook();
       applyCSS();
       buildUI();
 
+      lightbox.on('openingAnimationStart', () => {
+        showUI();
+      });
+
+      lightbox.on('closingAnimationStart', () => {
+        hideUI(pswp);
+      });
+
       pswp.on('destroy', () => {
+        console.log('unbuild');
         unbuildUI(pswp);
         unapplyCSS(pswp);
         unapplyPaddingHook(pswp);
